@@ -128,6 +128,13 @@ public:
      */
     static Director* getInstance();
 
+    
+    //////////////////////////////////////////////////////////
+    // HVHack: Start: Added
+    static void setInstance(Director* overrideInstance);
+    // HVHack: End:
+    //////////////////////////////////////////////////////////
+    
     /**
      * @deprecated Use getInstance() instead.
      * @js NA
@@ -489,6 +496,14 @@ public:
     void resetMatrixStack();
 
 protected:
+    
+    //////////////////////////////////////////////////////////
+    // HVHack: Start:
+    virtual Renderer* createRenderer(void);
+    // HVHack: End:
+    //////////////////////////////////////////////////////////
+    
+    
     void reset();
     
     void purgeDirector();

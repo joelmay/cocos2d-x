@@ -92,6 +92,21 @@ const char *Director::EVENT_AFTER_DRAW = "director_after_draw";
 const char *Director::EVENT_AFTER_VISIT = "director_after_visit";
 const char *Director::EVENT_AFTER_UPDATE = "director_after_update";
 
+///////////////////////////////////////////////////////////////////
+// HVHack: Start:  Added
+// Hack: Allow override of this global variable from outside
+// the library.
+void Director::setInstance(Director* overrideInstance)
+{
+    assert(s_SharedDirector == nullptr);
+    assert(overrideInstance != nullptr);
+    
+    s_SharedDirector = overrideInstance;
+}
+// HVHack: End:
+///////////////////////////////////////////////////////////////////
+
+
 Director* Director::getInstance()
 {
     if (!s_SharedDirector)
@@ -165,12 +180,26 @@ bool Director::init(void)
     //init TextureCache
     initTextureCache();
     initMatrixStack();
-
-    _renderer = new (std::nothrow) Renderer;
+    
+    //////////////////////////////////////////////////////////
+    // HVHack: Start:  Replace
+    //_renderer = new (std::nothrow) Renderer;
+    //////////////////////////////////////////////////////////
+    _renderer = createRenderer();
+    // HVHack: End: Replace
+    //////////////////////////////////////////////////////////
+    
     RenderState::initialize();
 
     return true;
 }
+
+
+//////////////////////////////////////////////////////////
+// HVHack: Start:  Added
+Renderer* Director::createRenderer(void) { return new (std::nothrow) Renderer; }
+// HVHack: End: 
+//////////////////////////////////////////////////////////
 
 Director::~Director(void)
 {
