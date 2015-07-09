@@ -1844,6 +1844,15 @@
 		8525E3A31B291E42008EE815 /* clipper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8525E3A11B291E42008EE815 /* clipper.hpp */; };
 		85B3743A1B204B9400C488D6 /* clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85B374381B204B9400C488D6 /* clipper.cpp */; };
 		85B3743B1B204B9400C488D6 /* clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85B374381B204B9400C488D6 /* clipper.cpp */; };
+		9B0C9C421B4DEF6000B80F15 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A07A4D641783777C0073F6A7 /* libcocos2d iOS.a */; };
+		9B0C9C751B4E293D00B80F15 /* HVDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C9C731B4E293D00B80F15 /* HVDirector.cpp */; };
+		9B0C9C761B4E293D00B80F15 /* HVDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C9C731B4E293D00B80F15 /* HVDirector.cpp */; };
+		9B0C9C771B4E293D00B80F15 /* HVDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B0C9C741B4E293D00B80F15 /* HVDirector.h */; };
+		9B0C9C781B4E293D00B80F15 /* HVDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B0C9C741B4E293D00B80F15 /* HVDirector.h */; };
+		9B0C9C7B1B4E2F0800B80F15 /* SingletonOverrides.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C9C791B4E2F0800B80F15 /* SingletonOverrides.cpp */; };
+		9B0C9C7C1B4E2F0800B80F15 /* SingletonOverrides.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C9C791B4E2F0800B80F15 /* SingletonOverrides.cpp */; };
+		9B0C9C7D1B4E2F0800B80F15 /* SingletonOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B0C9C7A1B4E2F0800B80F15 /* SingletonOverrides.h */; };
+		9B0C9C7E1B4E2F0800B80F15 /* SingletonOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B0C9C7A1B4E2F0800B80F15 /* SingletonOverrides.h */; };
 		A07A4CAF1783777C0073F6A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1551A342158F2AB200E66CFE /* Foundation.framework */; };
 		B2165EEA19921124000BE3E6 /* CCPrimitiveCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B257B45E198A353E00D9A687 /* CCPrimitiveCommand.cpp */; };
 		B217703C1977ECB4009EE11B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B217703B1977ECB4009EE11B /* IOKit.framework */; };
@@ -2009,6 +2018,10 @@
 		B29A7E3F19EE1B7700872B35 /* AnimationState.h in Headers */ = {isa = PBXBuildFile; fileRef = B29A7DC619EE1B7700872B35 /* AnimationState.h */; };
 		B29A7E4019EE1B7700872B35 /* AnimationState.h in Headers */ = {isa = PBXBuildFile; fileRef = B29A7DC619EE1B7700872B35 /* AnimationState.h */; };
 		B2CC507C19776DD10041958E /* CCPhysicsJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46A170721807CE7A005B8026 /* CCPhysicsJoint.cpp */; };
+		B5668D7D1B3838E4003CBD5E /* UIScrollViewBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5668D7B1B3838E4003CBD5E /* UIScrollViewBar.cpp */; };
+		B5668D7E1B3838E4003CBD5E /* UIScrollViewBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5668D7B1B3838E4003CBD5E /* UIScrollViewBar.cpp */; };
+		B5668D7F1B3838E4003CBD5E /* UIScrollViewBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B5668D7C1B3838E4003CBD5E /* UIScrollViewBar.h */; };
+		B5668D801B3838E4003CBD5E /* UIScrollViewBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B5668D7C1B3838E4003CBD5E /* UIScrollViewBar.h */; };
 		B5CE6DBE1B3BF2B1002B0419 /* UIAbstractCheckButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE6DBC1B3BF2B1002B0419 /* UIAbstractCheckButton.cpp */; };
 		B5CE6DBF1B3BF2B1002B0419 /* UIAbstractCheckButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE6DBC1B3BF2B1002B0419 /* UIAbstractCheckButton.cpp */; };
 		B5CE6DC01B3BF2B1002B0419 /* UIAbstractCheckButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B5CE6DBD1B3BF2B1002B0419 /* UIAbstractCheckButton.h */; };
@@ -2017,10 +2030,6 @@
 		B5CE6DC91B3C05BA002B0419 /* UIRadioButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE6DC61B3C05BA002B0419 /* UIRadioButton.cpp */; };
 		B5CE6DCA1B3C05BA002B0419 /* UIRadioButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B5CE6DC71B3C05BA002B0419 /* UIRadioButton.h */; };
 		B5CE6DCB1B3C05BA002B0419 /* UIRadioButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B5CE6DC71B3C05BA002B0419 /* UIRadioButton.h */; };
-		B5668D7D1B3838E4003CBD5E /* UIScrollViewBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5668D7B1B3838E4003CBD5E /* UIScrollViewBar.cpp */; };
-		B5668D7E1B3838E4003CBD5E /* UIScrollViewBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5668D7B1B3838E4003CBD5E /* UIScrollViewBar.cpp */; };
-		B5668D7F1B3838E4003CBD5E /* UIScrollViewBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B5668D7C1B3838E4003CBD5E /* UIScrollViewBar.h */; };
-		B5668D801B3838E4003CBD5E /* UIScrollViewBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B5668D7C1B3838E4003CBD5E /* UIScrollViewBar.h */; };
 		B603F1A81AC8EA0900A9579C /* CCTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B603F1A61AC8EA0900A9579C /* CCTerrain.cpp */; };
 		B603F1A91AC8EA0900A9579C /* CCTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B603F1A61AC8EA0900A9579C /* CCTerrain.cpp */; };
 		B603F1AA1AC8EA0900A9579C /* CCTerrain.h in Headers */ = {isa = PBXBuildFile; fileRef = B603F1A71AC8EA0900A9579C /* CCTerrain.h */; };
@@ -4607,6 +4616,10 @@
 		5E9F61251A3FFE3D0038DE01 /* CCPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPlane.h; sourceTree = "<group>"; };
 		8525E3A11B291E42008EE815 /* clipper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = clipper.hpp; sourceTree = "<group>"; };
 		85B374381B204B9400C488D6 /* clipper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clipper.cpp; sourceTree = "<group>"; };
+		9B0C9C731B4E293D00B80F15 /* HVDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HVDirector.cpp; sourceTree = "<group>"; };
+		9B0C9C741B4E293D00B80F15 /* HVDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HVDirector.h; sourceTree = "<group>"; };
+		9B0C9C791B4E2F0800B80F15 /* SingletonOverrides.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingletonOverrides.cpp; sourceTree = "<group>"; };
+		9B0C9C7A1B4E2F0800B80F15 /* SingletonOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonOverrides.h; sourceTree = "<group>"; };
 		A07A4D641783777C0073F6A7 /* libcocos2d iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcocos2d iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20564AA1A6E5744001C1B6E /* ccShader_PositionColorTextureAsPointsize.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ccShader_PositionColorTextureAsPointsize.vert; sourceTree = "<group>"; };
 		B217703B1977ECB4009EE11B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -4704,12 +4717,12 @@
 		B29A7DC619EE1B7700872B35 /* AnimationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationState.h; sourceTree = "<group>"; };
 		B3AF019E1842FBA400A98B85 /* b2MotorJoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2MotorJoint.cpp; sourceTree = "<group>"; };
 		B3AF019F1842FBA400A98B85 /* b2MotorJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2MotorJoint.h; sourceTree = "<group>"; };
+		B5668D7B1B3838E4003CBD5E /* UIScrollViewBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIScrollViewBar.cpp; sourceTree = "<group>"; };
+		B5668D7C1B3838E4003CBD5E /* UIScrollViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIScrollViewBar.h; sourceTree = "<group>"; };
 		B5CE6DBC1B3BF2B1002B0419 /* UIAbstractCheckButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIAbstractCheckButton.cpp; sourceTree = "<group>"; };
 		B5CE6DBD1B3BF2B1002B0419 /* UIAbstractCheckButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAbstractCheckButton.h; sourceTree = "<group>"; };
 		B5CE6DC61B3C05BA002B0419 /* UIRadioButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIRadioButton.cpp; sourceTree = "<group>"; };
 		B5CE6DC71B3C05BA002B0419 /* UIRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRadioButton.h; sourceTree = "<group>"; };
-		B5668D7B1B3838E4003CBD5E /* UIScrollViewBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIScrollViewBar.cpp; sourceTree = "<group>"; };
-		B5668D7C1B3838E4003CBD5E /* UIScrollViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIScrollViewBar.h; sourceTree = "<group>"; };
 		B603F1A61AC8EA0900A9579C /* CCTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTerrain.cpp; sourceTree = "<group>"; };
 		B603F1A71AC8EA0900A9579C /* CCTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTerrain.h; sourceTree = "<group>"; };
 		B603F1B11AC8F1FD00A9579C /* ccShader_3D_Terrain.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ccShader_3D_Terrain.frag; sourceTree = "<group>"; };
@@ -5547,6 +5560,7 @@
 			files = (
 				15AE1C1919AAE30900C27E9E /* libwebsockets.a in Frameworks */,
 				15AE1B4A19AAD49000C27E9E /* libcurl.a in Frameworks */,
+				9B0C9C421B4DEF6000B80F15 /* libcocos2d iOS.a in Frameworks */,
 				292F1A5E1A5151CE00E479F8 /* libssl.a in Frameworks */,
 				A07A4CAF1783777C0073F6A7 /* Foundation.framework in Frameworks */,
 				1A570364180BD1120088DEC7 /* libpng.a in Frameworks */,
@@ -5591,6 +5605,7 @@
 				50272538190BF1B900AAF4ED /* cocos2d.h */,
 				46A15FCE1807A544005B8026 /* README.md */,
 				50DC5180187B817900A9C23F /* RELEASE_NOTES.md */,
+				9B0C9C6D1B4E249900B80F15 /* hvoverrides */,
 				46A169A11807B037005B8026 /* 2d */,
 				B29594B81926D61F003EEF37 /* 3d */,
 				46A15FD01807A56F005B8026 /* audio */,
@@ -7745,6 +7760,18 @@
 			path = ../external/clipper;
 			sourceTree = "<group>";
 		};
+		9B0C9C6D1B4E249900B80F15 /* hvoverrides */ = {
+			isa = PBXGroup;
+			children = (
+				9B0C9C731B4E293D00B80F15 /* HVDirector.cpp */,
+				9B0C9C741B4E293D00B80F15 /* HVDirector.h */,
+				9B0C9C791B4E2F0800B80F15 /* SingletonOverrides.cpp */,
+				9B0C9C7A1B4E2F0800B80F15 /* SingletonOverrides.h */,
+			);
+			name = hvoverrides;
+			path = ../cocos/hvoverrides;
+			sourceTree = "<group>";
+		};
 		B29594B81926D61F003EEF37 /* 3d */ = {
 			isa = PBXGroup;
 			children = (
@@ -9591,6 +9618,7 @@
 				15AE1BB419AADFEF00C27E9E /* HttpResponse.h in Headers */,
 				B665E3641AA80A6500DDB1C5 /* CCPUOnTimeObserver.h in Headers */,
 				15AE1A8519AAD40300C27E9E /* b2Joint.h in Headers */,
+				9B0C9C771B4E293D00B80F15 /* HVDirector.h in Headers */,
 				15AE1A8D19AAD40300C27E9E /* b2RevoluteJoint.h in Headers */,
 				50ABBE291925AB6F00A911A9 /* CCAutoreleasePool.h in Headers */,
 				299CF1FD19A434BC00C378C1 /* ccRandom.h in Headers */,
@@ -9720,6 +9748,7 @@
 				15AE191A19AAD35000C27E9E /* CCSSceneReader.h in Headers */,
 				B665E2241AA80A6500DDB1C5 /* CCPUBehaviourTranslator.h in Headers */,
 				292DB13F19B4574100A80320 /* UIEditBox.h in Headers */,
+				9B0C9C7D1B4E2F0800B80F15 /* SingletonOverrides.h in Headers */,
 				B665E3881AA80A6500DDB1C5 /* CCPUPathFollowerTranslator.h in Headers */,
 				B665E2541AA80A6500DDB1C5 /* CCPUDoAffectorEventHandler.h in Headers */,
 				50ABBE671925AB6F00A911A9 /* CCEventListenerCustom.h in Headers */,
@@ -10394,6 +10423,7 @@
 				1A570295180BCCAB0088DEC7 /* CCAnimation.h in Headers */,
 				B6CAB21E1AF9AA1A00B9B856 /* btBoxBoxCollisionAlgorithm.h in Headers */,
 				B6CAB50A1AF9AA1A00B9B856 /* btGrahamScan2dConvexHull.h in Headers */,
+				9B0C9C781B4E293D00B80F15 /* HVDirector.h in Headers */,
 				B665E2D11AA80A6500DDB1C5 /* CCPUInterParticleCollider.h in Headers */,
 				50ABBDB81925AB4100A911A9 /* CCTexture2D.h in Headers */,
 				B6CAB2581AF9AA1A00B9B856 /* btGhostObject.h in Headers */,
@@ -10417,6 +10447,7 @@
 				B6CAB5261AF9AA1A00B9B856 /* btQuickprof.h in Headers */,
 				50ABBE741925AB6F00A911A9 /* CCEventListenerMouse.h in Headers */,
 				D0FD03581A3B51AA00825BB5 /* CCAllocatorMutex.h in Headers */,
+				9B0C9C7E1B4E2F0800B80F15 /* SingletonOverrides.h in Headers */,
 				B29A7E1219EE1B7700872B35 /* EventData.h in Headers */,
 				1A5702CB180BCE370088DEC7 /* CCTextFieldTTF.h in Headers */,
 				1A5702ED180BCE750088DEC7 /* CCTileMapAtlas.h in Headers */,
@@ -10957,6 +10988,7 @@
 				15AE189819AAD33D00C27E9E /* CCMenuItemLoader.cpp in Sources */,
 				15AE1A5719AAD40300C27E9E /* b2Settings.cpp in Sources */,
 				50ABBE271925AB6F00A911A9 /* CCAutoreleasePool.cpp in Sources */,
+				9B0C9C751B4E293D00B80F15 /* HVDirector.cpp in Sources */,
 				5E9F612A1A3FFE3D0038DE01 /* CCPlane.cpp in Sources */,
 				15AE197419AAD35700C27E9E /* CCTimeLine.cpp in Sources */,
 				B665E4061AA80A6600DDB1C5 /* CCPUSphereSurfaceEmitter.cpp in Sources */,
@@ -11284,6 +11316,7 @@
 				B6CAB4471AF9AA1A00B9B856 /* btThreadSupportInterface.cpp in Sources */,
 				15AE1B6A19AADA9900C27E9E /* UIDeprecated.cpp in Sources */,
 				15AE183C19AAD2F700C27E9E /* CCSkeleton3D.cpp in Sources */,
+				9B0C9C7B1B4E2F0800B80F15 /* SingletonOverrides.cpp in Sources */,
 				B6CAB36F1AF9AA1A00B9B856 /* btGjkConvexCast.cpp in Sources */,
 				B6CAB31B1AF9AA1A00B9B856 /* btContactProcessing.cpp in Sources */,
 				15AE1A2319AAD3D500C27E9E /* b2BroadPhase.cpp in Sources */,
@@ -11839,6 +11872,7 @@
 				15AE1ACA19AAD40300C27E9E /* b2MouseJoint.cpp in Sources */,
 				15AE19AC19AAD39700C27E9E /* LoadingBarReader.cpp in Sources */,
 				50ABBE7E1925AB6F00A911A9 /* CCEventTouch.cpp in Sources */,
+				9B0C9C7C1B4E2F0800B80F15 /* SingletonOverrides.cpp in Sources */,
 				15AE183119AAD2F700C27E9E /* CCOBB.cpp in Sources */,
 				B6CAB4FC1AF9AA1A00B9B856 /* btConvexHull.cpp in Sources */,
 				B29A7DCA19EE1B7700872B35 /* SlotData.c in Sources */,
@@ -12185,6 +12219,7 @@
 				B6CAB3AA1AF9AA1A00B9B856 /* btContactConstraint.cpp in Sources */,
 				B665E2431AA80A6500DDB1C5 /* CCPUCollisionAvoidanceAffector.cpp in Sources */,
 				B6CAB23E1AF9AA1A00B9B856 /* btConvex2dConvex2dAlgorithm.cpp in Sources */,
+				9B0C9C761B4E293D00B80F15 /* HVDirector.cpp in Sources */,
 				B665E3EB1AA80A6600DDB1C5 /* CCPUSlaveBehaviour.cpp in Sources */,
 				B665E2771AA80A6500DDB1C5 /* CCPUDoPlacementParticleEventHandlerTranslator.cpp in Sources */,
 				15AE193E19AAD35100C27E9E /* CCBatchNode.cpp in Sources */,
@@ -12570,6 +12605,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
