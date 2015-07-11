@@ -59,12 +59,13 @@ void hv::SpriteBatchNodeX::draw(
 
 void hv::SpriteBatchNodeX::executeRenderCommand(const cocos2d::Mat4& transform, bool transformUpdated)
 {
-    auto program = getGLProgram();
-    program->use();
-    program->setUniformsForBuiltins(transform);
+//    this->getGLProgramState();
+//    auto program = getGLProgram();
+//    
+//    auto programState = cocos2d::GLProgramState::getOrCreateWithGLProgram(program);
+//    programState->apply(transform);
     
-    auto programState = cocos2d::GLProgramState::getOrCreateWithGLProgram(program);
-    programState->apply(transform);
+    getGLProgramState()->apply(transform);
     
     
     auto textureID = _textureAtlas->getTexture()->getName();
