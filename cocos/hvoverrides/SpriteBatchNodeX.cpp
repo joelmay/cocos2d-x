@@ -8,6 +8,24 @@
 
 #include "SpriteBatchNodeX.h"
 
+/*
+ * creation with File Image
+ */
+
+hv::SpriteBatchNodeX* hv::SpriteBatchNodeX::create(const std::string& fileImage, ssize_t capacity/* = DEFAULT_CAPACITY*/)
+{
+    hv::SpriteBatchNodeX *batchNode = new (std::nothrow) hv::SpriteBatchNodeX();
+    batchNode->initWithFile(fileImage, capacity);
+    batchNode->autorelease();
+    
+    return batchNode;
+}
+
+hv::SpriteBatchNodeX::SpriteBatchNodeX(void) :
+    _insideBounds(false)
+{
+}
+
 void hv::SpriteBatchNodeX::draw(
                 cocos2d::Renderer*   renderer,
                 const cocos2d::Mat4& transform,
@@ -66,13 +84,31 @@ void hv::SpriteBatchNodeX::executeRenderCommand(const cocos2d::Mat4& transform, 
     auto program = getGLProgram();
     program->use();
     program->setUniformsForBuiltins(transform);
-    //program->setUniformsForBuiltins(_mv);
+    
+    auto programState = cocos2d::GLProgramState::getOrCreateWithGLProgram(program);
+    programState->apply(transform);
+    
+    
+//    auto glProgramState = cocos2d::GLProgramState::getOrCreateWithGLProgram(program);
+    //ball->setGLProgramState(glProgramState);
     
     auto textureID = _textureAtlas->getTexture()->getName();
+//    glProgramState->setUniformTexture("u_texture"         , textureID);
+//    glProgramState->setUniformMat4   ("ColorMatrix"       , _colorMatrix);
+    
+    //glProgramState->updateUniformsAndAttributes();
+ 
+    
+    //program->setUniformsForBuiltins(_mv);
+//    glProgramState->applyUniforms();
+    
     
     cocos2d::GL::bindTexture2D(textureID);
     cocos2d::GL::blendFunc(_blendFunc.src, _blendFunc.dst);
     //cocos2d::GL::blendFunc(_blendType.src, _blendType.dst);
+    
+   
+    //program->use();
     
     // Draw
     _textureAtlas->drawQuads();

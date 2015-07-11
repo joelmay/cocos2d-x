@@ -19,11 +19,15 @@ private:
     bool _insideBounds;
     cocos2d::CustomCommand _customCommand;
     
+    cocos2d::Mat4 _colorMatrix;
+    
 protected:
     void onDraw(const cocos2d::Mat4& transform, bool transformUpdated);
     
 public:
-    SpriteBatchNodeX(void) : _insideBounds(false) {}
+    static SpriteBatchNodeX* create(const std::string& fileImage, ssize_t capacity/* = DEFAULT_CAPACITY*/);
+    
+    SpriteBatchNodeX(void);
     
     void executeRenderCommand(const cocos2d::Mat4& transform, bool transformUpdated);
     virtual void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags) override;
