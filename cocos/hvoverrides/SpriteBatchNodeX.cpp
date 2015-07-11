@@ -22,8 +22,37 @@ hv::SpriteBatchNodeX* hv::SpriteBatchNodeX::create(const std::string& fileImage,
 }
 
 hv::SpriteBatchNodeX::SpriteBatchNodeX(void) :
-    _insideBounds(false)
+    _insideBounds           (false),
+    _colorMatricesUniform   (-1)
 {
+    
+    _colorMatrices[0].set(
+                          0.8f, 0.8f, 0.0f, 0.0f,
+                          0.0f, 0.8f, 0.8f, 0.0f,
+                          0.8f, 0.0f, 0.8f, 0.0f,
+                          0.0f, 0.0f, 0.0f, 1.0f
+                          );
+    
+    _colorMatrices[1].set(
+                          0.0f, 0.8f, 0.0f, 0.0f,
+                          0.0f, 0.0f, 0.8f, 0.0f,
+                          0.8f, 0.0f, 0.0f, 0.0f,
+                          0.0f, 0.0f, 0.0f, 1.0f
+                          );
+}
+
+void hv::SpriteBatchNodeX::updateUniformColorMatrices(void)
+{
+    if (_colorMatricesUniform == -1){
+        auto program = this->getGLProgram()->getProgram();
+         _colorMatricesUniform = glGetUniformLocation(program, "ColorMatrices");
+         //_colorMatricesUniform = glGetUniformLocation(p->getProgram(), "ColorMatrices");
+    }
+    
+    glUniformMatrix4fv(_colorMatricesUniform,
+                       2,
+                       GL_FALSE,
+                       (const GLfloat*)&_colorMatrices[0]);
 }
 
 void hv::SpriteBatchNodeX::draw(
@@ -51,7 +80,9 @@ void hv::SpriteBatchNodeX::draw(
     }
     
     _customCommand.init(_globalZOrder, transform, flags);
-    _customCommand.func = CC_CALLBACK_0(hv::SpriteBatchNodeX::executeRenderCommand, this, transform, flags);
+//    _customCommand.func = CC_CALLBACK_0(hv::SpriteBatchNodeX::executeRenderCommand, this, transform, flags);
+    
+    _customCommand.func = [this,transform,flags](){ this->executeRenderCommand(transform, flags); };
     
     renderer->addCommand(&_customCommand);
 }
@@ -60,6 +91,8 @@ void hv::SpriteBatchNodeX::draw(
 void hv::SpriteBatchNodeX::executeRenderCommand(const cocos2d::Mat4& transform, bool transformUpdated)
 {
     getGLProgramState()->apply(transform);
+    
+    this->updateUniformColorMatrices();
     
     auto textureID = _textureAtlas->getTexture()->getName();
     
