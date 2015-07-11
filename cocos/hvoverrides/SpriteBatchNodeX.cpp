@@ -92,7 +92,7 @@ void hv::SpriteBatchNodeX::executeRenderCommand(const cocos2d::Mat4& transform, 
 {
     getGLProgramState()->apply(transform);
     
-    this->updateUniformColorMatrices();
+//    this->updateUniformColorMatrices();
     
     auto textureID = _textureAtlas->getTexture()->getName();
     
