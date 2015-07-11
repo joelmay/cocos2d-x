@@ -135,6 +135,14 @@ public:
     /**Constructor.*/
     Renderer();
     /**Destructor.*/
+    
+    ///////////////////////////////////////////////////////////////////
+    // HVHack: Start:  Added
+    // Hack: Allow override of this global variable from outside
+    // the library.
+    virtual
+    // End hack.
+    /////////////////////////////////
     ~Renderer();
 
     //TODO: manage GLView inside Render itself
@@ -197,7 +205,15 @@ protected:
     void setupVBOAndVAO();
     void setupVBO();
     void mapBuffers();
+    ////////////////////////////
+    // HV Hack
+    virtual
+    ///////////////////////////
     void drawBatchedTriangles();
+    ////////////////////////////
+    // HV Hack
+    virtual
+    ///////////////////////////
     void drawBatchedQuads();
 
     //Draw the previews queued quads and flush previous context
@@ -210,10 +226,27 @@ protected:
     void flushQuads();
     void flushTriangles();
 
+    ////////////////////////////
+    // HV Hack
+    virtual
+    ///////////////////////////
     void processRenderCommand(RenderCommand* command);
+    ////////////////////////////
+    // HV Hack
+    virtual
+    ///////////////////////////
     void visitRenderQueue(RenderQueue& queue);
 
+    ////////////////////////////
+    // HV Hack
+    virtual
+    ////////////////////////////
     void fillVerticesAndIndices(const TrianglesCommand* cmd);
+    
+    ////////////////////////////
+    // HV Hack
+    virtual
+    ////////////////////////////
     void fillQuads(const QuadCommand* cmd);
 
     /* clear color set outside be used in setGLDefaultValues() */

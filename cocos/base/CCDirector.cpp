@@ -96,7 +96,7 @@ const char *Director::EVENT_AFTER_UPDATE = "director_after_update";
 // HVHack: Start:  Added
 // Hack: Allow override of this global variable from outside
 // the library.
-void Director::setInstance(Director* overrideInstance)
+void DisplayLinkDirector::setInstance(DisplayLinkDirector* overrideInstance)
 {
     assert(s_SharedDirector == nullptr);
     assert(overrideInstance != nullptr);

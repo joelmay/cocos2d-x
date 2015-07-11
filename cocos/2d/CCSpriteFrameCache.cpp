@@ -50,6 +50,20 @@ NS_CC_BEGIN
 
 static SpriteFrameCache *_sharedSpriteFrameCache = nullptr;
 
+///////////////////////////////////////////////////////////////////
+// HVHack: Start:  Added
+// Hack: Allow override of this global variable from outside
+// the library.
+void SpriteFrameCache::setInstance(SpriteFrameCache* overrideInstance)
+{
+    assert(_sharedSpriteFrameCache == nullptr);
+    assert(overrideInstance != nullptr);
+    
+    _sharedSpriteFrameCache = overrideInstance;
+}
+// HVHack: End:
+///////////////////////////////////////////////////////////////////
+
 SpriteFrameCache* SpriteFrameCache::getInstance()
 {
     if (! _sharedSpriteFrameCache)

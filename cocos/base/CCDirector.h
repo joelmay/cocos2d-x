@@ -129,13 +129,7 @@ public:
     static Director* getInstance();
 
     
-    //////////////////////////////////////////////////////////
-    // HVHack: Start: Added
-    static void setInstance(Director* overrideInstance);
-    // HVHack: End:
-    //////////////////////////////////////////////////////////
-    
-    /**
+   /**
      * @deprecated Use getInstance() instead.
      * @js NA
      */
@@ -640,7 +634,14 @@ protected:
 class DisplayLinkDirector : public Director
 {
 public:
-    DisplayLinkDirector() 
+    
+    //////////////////////////////////////////////////////////
+    // HVHack: Start: Added
+    static void setInstance(DisplayLinkDirector* overrideInstance);
+    // HVHack: End:
+    //////////////////////////////////////////////////////////
+    
+    DisplayLinkDirector()
         : _invalid(false)
     {}
     virtual ~DisplayLinkDirector(){}

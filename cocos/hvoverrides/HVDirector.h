@@ -16,7 +16,11 @@ namespace hv {
     // TODO: This is probably Apple-specific.
     class Director : public cocos2d::DisplayLinkDirector {
     public:
+        static hv::Director* getInstance();
+        
         Director(void);
+        
+        virtual cocos2d::Renderer* createRenderer(void) override;
     };
     
 }

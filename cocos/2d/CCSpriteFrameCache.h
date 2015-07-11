@@ -65,6 +65,13 @@ public:
      * @return The instance of the Sprite Frame Cache.
      * @js NA
      */
+    
+    //////////////////////////////////////////////////////////
+    // HVHack: Start: Added
+    static void setInstance(SpriteFrameCache* overrideInstance);
+    // HVHack: End:
+    //////////////////////////////////////////////////////////
+    
     static SpriteFrameCache* getInstance();
 
     /** @deprecated Use getInstance() instead 
