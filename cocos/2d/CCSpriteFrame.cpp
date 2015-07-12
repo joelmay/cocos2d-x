@@ -54,7 +54,8 @@ SpriteFrame* SpriteFrame::createWithTexture(Texture2D *texture, const Rect& rect
 SpriteFrame* SpriteFrame::createWithTexture(Texture2D* texture, const Rect& rect, bool rotated, const Vec2& offset, const Size& originalSize)
 {
     SpriteFrame *spriteFrame = new (std::nothrow) SpriteFrame();
-    spriteFrame->initWithTexture(texture, rect, rotated, offset, originalSize);
+    //spriteFrame->initWithTexture(texture, rect, rotated, offset, originalSize);
+    spriteFrame->initWithTexture(texture, rect, rotated, offset, rect.size);
     spriteFrame->autorelease();
 
     return spriteFrame;
