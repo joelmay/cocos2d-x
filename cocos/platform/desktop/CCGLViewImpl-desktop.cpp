@@ -345,7 +345,8 @@ bool GLViewImpl::initWithRect(const std::string& viewName, Rect rect, float fram
 
     _frameZoomFactor = frameZoomFactor;
 
-    glfwWindowHint(GLFW_RESIZABLE,GL_FALSE);
+    //glfwWindowHint(GLFW_RESIZABLE,GL_FALSE);
+glfwWindowHint(GLFW_RESIZABLE,GL_TRUE); // TODO: HACK: Experiment
     glfwWindowHint(GLFW_RED_BITS,_glContextAttrs.redBits);
     glfwWindowHint(GLFW_GREEN_BITS,_glContextAttrs.greenBits);
     glfwWindowHint(GLFW_BLUE_BITS,_glContextAttrs.blueBits);
@@ -733,6 +734,9 @@ void GLViewImpl::onGLFWWindowSizeFunCallback(GLFWwindow *window, int width, int 
 {
     if (_resolutionPolicy != ResolutionPolicy::UNKNOWN)
     {
+        // TODO: Force to keep in same aspect ratio
+        _screenSize.setSize(width, height);
+        
         updateDesignResolutionSize();
         Director::getInstance()->setViewport();
     }
