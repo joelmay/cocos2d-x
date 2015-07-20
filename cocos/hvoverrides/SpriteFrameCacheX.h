@@ -14,6 +14,8 @@
 
 namespace hv {
     
+class SpriteFrameX;
+    
 class SpriteFrameCacheX : public cocos2d::SpriteFrameCache {
     
 private:
@@ -22,12 +24,15 @@ private:
     static bool  parseAttrBool (rapidxml::xml_node<char>* pSpriteNode, const char *attrName, bool  defaultVal=false);
     static std::string parseAttrString(rapidxml::xml_node<char>* pSpriteNode, const char *attrName, const char *szDefaultVal="");
     
+    SpriteFrameX* parseFrame      (rapidxml::xml_node<char>* spriteNode, cocos2d::Texture2D *texture);
+    SpriteFrameX* parseNestedFrame(rapidxml::xml_node<char>* spriteNode, cocos2d::Texture2D *texture);
+    
 public:
     static SpriteFrameCacheX* getInstance();
     
     SpriteFrameCacheX(void);
     
-    void addSpriteFramesWithFileX(const std::string& plist);
+    void addSpriteFramesWithFileX(const std::string& plist, const std::string& atlasPng="");
     
 };
 }

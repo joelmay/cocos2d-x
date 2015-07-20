@@ -9,6 +9,8 @@
 #include <string>
 #include <iostream>
 #include "SpriteFrameCacheX.h"
+#include "SpriteFrameX.h"
+#include "NestedSpriteFrame.h"
 //#include "rapidxml.hpp"
 
 using namespace std;
@@ -93,7 +95,7 @@ std::string SpriteFrameCacheX::parseAttrString(rapidxml::xml_node<char>* pSprite
 }
 
 
-void SpriteFrameCacheX::addSpriteFramesWithFileX(const std::string& plist)
+void SpriteFrameCacheX::addSpriteFramesWithFileX(const std::string& plist, const std::string& atlasPng)
 {
     CCASSERT(plist.size()>0, "plist filename should not be nullptr");
     
@@ -122,12 +124,19 @@ void SpriteFrameCacheX::addSpriteFramesWithFileX(const std::string& plist)
         // Create texture.
         string texturePath = plist;
         
-        // remove .xxx
-        size_t startPos = texturePath.find_last_of(".");
-        texturePath = texturePath.erase(startPos);
-        
-        // append .png
-        texturePath = texturePath.append(".png");
+        if (atlasPng.length() > 0){
+            texturePath = FileUtils::getInstance()->fullPathForFilename(atlasPng);
+        }
+        else{
+            texturePath = plist;
+            
+            // remove .xxx
+            size_t startPos = texturePath.find_last_of(".");
+            texturePath = texturePath.erase(startPos);
+            
+            // append .png
+            texturePath = texturePath.append(".png");
+        }
         
         Texture2D *texture = Director::getInstance()->getTextureCache()->addImage(texturePath.c_str());
         CCLOG("cocos2d: SpriteFrameCache: Trying to use file %s as texture", texturePath.c_str());
@@ -146,40 +155,40 @@ void SpriteFrameCacheX::addSpriteFramesWithFileX(const std::string& plist)
             
             cout << "Name of my first node is: " << doc.first_node()->name() << "\n";
             auto topNode = doc.first_node();
-            int totalAtlasW = parseAttrInt(topNode, "width" , 1024);
-            int totalAtlasH = parseAttrInt(topNode, "height", 1024);
             
-            auto spriteNode = topNode->first_node();
+            auto firstNode  = topNode->first_node();
             
+            /////////////////////////////////////////////////////////
+            // First, parse non-nested nodes.
+            auto spriteNode = firstNode;
             while (spriteNode != nullptr){
                 
-                std::string idName = parseAttrString(spriteNode, "id");
-//                int         intId  = parseAttrInt   (spriteNode, "intId");
-                int         x      = parseAttrInt   (spriteNode, "x");
-                int         y      = parseAttrInt   (spriteNode, "y");
-                int         w      = parseAttrInt   (spriteNode, "width");
-                int         h      = parseAttrInt   (spriteNode, "height");
-//                int         atlasW = parseAttrInt   (spriteNode, "atlasWidth");
-//                int         atlasH = parseAttrInt   (spriteNode, "atlasHeight");
-                int         regX   = parseAttrInt   (spriteNode, "regX");
-                int         regY   = parseAttrInt   (spriteNode, "regY");
+                auto subframeNode = spriteNode->first_node("frame");
                 
-                bool bRotated = parseAttrBool(spriteNode, "sideways");
+                bool bNestedNode = subframeNode != nullptr;
                 
-                Rect frame(x,y,w,h);
-                Vec2 offset(regX,regY);
-                Size sourceSize(totalAtlasW, totalAtlasH);
+                if (!bNestedNode){
+                    SpriteFrameX* spriteFrame = parseFrame(spriteNode, texture);
+                    _spriteFrames.insert(spriteFrame->getName(), spriteFrame);
+                }
                 
-                // create frame
-                SpriteFrame *spriteFrame = SpriteFrame::createWithTexture(texture,
-                                                             frame,
-                                                             bRotated,
-                                                             offset,
-                                                             sourceSize
-                                                             );
+                spriteNode = spriteNode->next_sibling();
+            }
+            
+            /////////////////////////////////////////////////////////
+            // Second, parse Nested nodes.
+            spriteNode = firstNode;
+            while (spriteNode != nullptr){
                 
-                _spriteFrames.insert(idName, spriteFrame);
+                auto subframeNode = spriteNode->first_node("frame");
                 
+                bool bNestedNode = subframeNode != nullptr;
+                
+                if (bNestedNode){
+                    
+                    SpriteFrameX* spriteFrame = parseNestedFrame(spriteNode, texture);
+                    _spriteFrames.insert(spriteFrame->getName(), spriteFrame);
+                }
                 
                 spriteNode = spriteNode->next_sibling();
             }
@@ -191,4 +200,84 @@ void SpriteFrameCacheX::addSpriteFramesWithFileX(const std::string& plist)
             CCLOG("cocos2d: SpriteFrameCache: Couldn't load texture");
         }
     }
+}
+
+SpriteFrameX* SpriteFrameCacheX::parseFrame(rapidxml::xml_node<char>* spriteNode, Texture2D *texture)
+{
+    std::string idName = parseAttrString(spriteNode, "id");
+    int         intId  = parseAttrInt   (spriteNode, "intId");
+    int         x      = parseAttrInt   (spriteNode, "x");
+    int         y      = parseAttrInt   (spriteNode, "y");
+    int         w      = parseAttrInt   (spriteNode, "width");
+    int         h      = parseAttrInt   (spriteNode, "height");
+    int         atlasW = parseAttrInt   (spriteNode, "atlasWidth", -1);
+    int         atlasH = parseAttrInt   (spriteNode, "atlasHeight", -1);
+    int         regX   = parseAttrInt   (spriteNode, "regX");
+    int         regY   = parseAttrInt   (spriteNode, "regY");
+    
+    bool bRotated = parseAttrBool(spriteNode, "sideways");
+    
+    printf("atlas w,h: %d,%d\n", atlasW, atlasH);
+    
+    Rect frame(x,y,w,h);
+    Vec2 offset(regX,regY);
+    Size sourceSize(atlasW, atlasH);
+    
+    // create frame
+    SpriteFrameX *spriteFrame = SpriteFrameX::createWithTexture(idName,
+                                                               intId,
+                                                               texture,
+                                                               frame,
+                                                               bRotated,
+                                                               offset,
+                                                               sourceSize
+                                                              );
+    return spriteFrame;
+}
+
+SpriteFrameX* SpriteFrameCacheX:: parseNestedFrame(rapidxml::xml_node<char>* spriteNode, Texture2D *texture)
+{
+    std::string idName = parseAttrString(spriteNode, "id");
+    int         intId  = parseAttrInt   (spriteNode, "intId");
+    
+    NestedSpriteFrame* spriteFrame = NestedSpriteFrame::createWithTexture(idName, intId, texture);
+    
+    auto frameSubNode = spriteNode->first_node("frame");
+    
+    while (frameSubNode != nullptr){
+        
+        // TODO: This will be where we handle multiple movieclip frames in on sprite.
+        auto spriteRefNode = frameSubNode->first_node("spriteRef");
+        
+        while (spriteRefNode != nullptr){
+            std::string refID    = parseAttrString(spriteRefNode, "refID");
+            int         refIntID = parseAttrInt   (spriteRefNode, "refIntID");
+            
+            float a  = parseAttrFloat   (spriteRefNode, "a" , 1.0f);
+            float b  = parseAttrFloat   (spriteRefNode, "b" , 0.0f);
+            float c  = parseAttrFloat   (spriteRefNode, "c" , 0.0f);
+            float d  = parseAttrFloat   (spriteRefNode, "d" , 1.0f);
+            float tx = parseAttrFloat   (spriteRefNode, "tx", 0.0f);
+            float ty = parseAttrFloat   (spriteRefNode, "ty", 0.0f);
+            
+            float alpha = parseAttrFloat   (spriteRefNode, "alpha", 1.0f);
+            
+            Mat4 m(
+                   a   , b   , 0.0f, 0.0f,
+                   c   , d   , 0.0f, 0.0f,
+                   0.0f, 0.0f, 1.0f, 0.0f,
+                   tx  , ty  , 0.0f, 1.0f
+                   );
+            
+            // Don't actually link the subsprites frame to the container sprite frame
+            // yet.  The child sprite might actually be another nested sprite
+            // and not created yet.
+            spriteFrame->addChild(refID, refIntID, m, alpha);
+            
+            spriteRefNode = spriteRefNode->next_sibling();
+        }
+        frameSubNode = frameSubNode->next_sibling();
+    }
+    
+    return spriteFrame;
 }
